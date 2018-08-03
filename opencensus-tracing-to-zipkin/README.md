@@ -48,3 +48,26 @@ To create a span in a trace, we used the `Tracer` to start a new span (4). A spa
 
 Traces are queued up in memory and flushed to the trace store (in this case, Zipkin) periodically, and/or when the buffer is full. In (5), we need to make sure that any buffered traces that had yet been sent are flushed for a graceful shutdown.
 
+The `main` method calls `doWork` a number of times. Each invocation also generates a child span. Take a look at `doWork` method.`
+
+```java
+	private static void doWork(int i) {
+		// 6. Get the global singleton Tracer object.
+		Tracer tracer = Tracing.getTracer();
+
+		// 7. Start another span. If antoher span was already started, it'll use that span as the parent span.
+		// In this example, the main method already started a span, so that'll be the parent span, and this will be
+		// a child span.
+		try (Scope scope = tracer.spanBuilder("doWork").startScopedSpan()) {
+			// Simulate some work.
+			try {
+				System.out.println("doing busy work");
+				Thread.sleep(100L);
+			}
+			catch (InterruptedException e) {
+			}
+		}
+	}
+```
+
+It also gets a hold of the `Tracer` singleton reference (6), and starts a new span (7). Because the `main` method already started a span, that is now known as the parent span, and the newly created span is the child span of this parent span.
