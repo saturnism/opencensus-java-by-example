@@ -1,2 +1,3 @@
-# opencensus-java-by-example
-OpenCensus for Java by Example
+# OpenCensus for Java by Example
+
+A collection of OpenCensus examples for Java.
