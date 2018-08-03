@@ -84,19 +84,19 @@ public class MetricsToPrometheus {
 		catch (InterruptedException e) {
 		}
 		finally {
-			// 5. Calculate the total time spent in this method.
+			// 9. Calculate the total time spent in this method.
 			final long endTime = System.currentTimeMillis();
 			final long totalTime = endTime - startTime;
 
-			// 6. Get a reference to the Stats Recorder singleton.
+			// 10. Get a reference to the Stats Recorder singleton.
 			StatsRecorder statsRecorder = Stats.getStatsRecorder();
 
-			// 7. Put the measures in a measure map, keyed by the measures we created earlier.
+			// 11. Put the measures in a measure map, keyed by the measures we created earlier.
 			MeasureMap measureMap = statsRecorder.newMeasureMap()
 					.put(COUNT_MEASURE, 1)
 					.put(LATENCY_MS_MEASURE, totalTime);
 
-			// 8. Record the measures by calling .record().
+			// 12. Record the measures by calling measureMap.record().
 			// But in this case, we also want to add additional tags.
 			measureMap.record(Tags.getTagger().emptyBuilder()
 					.put(METHOD_TAG, TagValue.create("doWork")).build());
