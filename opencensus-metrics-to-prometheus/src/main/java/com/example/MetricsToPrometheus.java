@@ -71,7 +71,6 @@ public class MetricsToPrometheus {
 	}
 
 	private static void doWork() {
-		// 4. Get the start time in milliseconds, since we are only measuring ms.
 		final long startTime = System.currentTimeMillis();
 
 		try {
