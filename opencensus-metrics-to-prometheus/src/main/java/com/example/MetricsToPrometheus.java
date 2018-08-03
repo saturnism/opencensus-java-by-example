@@ -74,10 +74,9 @@ public class MetricsToPrometheus {
 		// 4. Get the start time in milliseconds, since we are only measuring ms.
 		final long startTime = System.currentTimeMillis();
 
-		// Simulate some work.
 		try {
-			Random random = new Random();
-			long duration = 200 + random.nextInt(500);
+			// Simulate some work that takes 100 to 1000ms
+			long duration = (int)(Math.random() * ((1000 - 100) + 1)) + 100;
 			System.out.println("doing busy work for " + duration + "ms");
 			Thread.sleep(duration);
 		}
