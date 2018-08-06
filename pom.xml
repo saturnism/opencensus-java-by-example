@@ -32,5 +32,6 @@
     <modules>
         <module>opencensus-tracing-to-zipkin</module>
         <module>opencensus-metrics-to-prometheus</module>
+        <module>opencensus-metrics-to-prometheus-tags</module>
     </modules>
 </project>

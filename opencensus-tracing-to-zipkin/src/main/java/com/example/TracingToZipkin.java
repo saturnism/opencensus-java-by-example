@@ -2,7 +2,6 @@ package com.example;
 
 import io.opencensus.common.Scope;
 import io.opencensus.exporter.trace.zipkin.ZipkinTraceExporter;
-import io.opencensus.trace.Sampler;
 import io.opencensus.trace.Tracer;
 import io.opencensus.trace.Tracing;
 import io.opencensus.trace.config.TraceConfig;
